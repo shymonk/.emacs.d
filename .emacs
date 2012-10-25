@@ -27,6 +27,10 @@
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 4)
 
+(add-to-list 'load-path "/.emacs.d/plugins/ibus")
+(require 'ibus) 
+(add-hook 'after-init-hook 'ibus-mode-on) 
+
 ;; Full Screen
 (defun toggle-fullscreen ()
   (interactive)
@@ -54,6 +58,10 @@
 (global-set-key [f8] 'highlight-symbol-next)
 (global-set-key [(control f8)] 'highlight-symbol-prev)
 (global-set-key [(meta f8)] 'highlight-symbol-prev)
+
+;; sr-speedbar
+(add-to-list 'load-path "~/.emacs.d/plugins/sr-speedbar")
+(require 'sr-speedbar)
 
 ;; Cscope
 ;;(add-hook 'c-mode-common-hook
@@ -95,17 +103,15 @@
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 (autoload 'pymacs-autoload "pymacs")
-;;(eval-after-load "pymacs"
-;;  '(add-to-list 'pymacs-load-path YOUR-PYMACS-DIRECTORY"))
 
 ;; Pycomplete
-(add-to-list 'load-path "~/.emacs.d/plugins/pycomplete")
-(require 'pycomplete)
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist(cons '("python" . python-mode)
-                             interpreter-mode-alist))
-(setq py-python-command "python")
-(autoload 'python-mode "python-mode" "Python editing mode." t)
+;(add-to-list 'load-path "~/.emacs.d/plugins/pycomplete")
+;(require 'pycomplete)
+;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+;(setq interpreter-mode-alist(cons '("python" . python-mode)
+;                             interpreter-mode-alist))
+;(setq py-python-command "python")
+;(autoload 'python-mode "python-mode" "Python editing mode." t)
 
 ;; 在 mode-line 中显示列号
 (setq column-number-mode t)
@@ -138,32 +144,23 @@
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
-;; 代码折叠 
-(load-library "hideshow") 
-(add-hook 'java-mode-hook 'hs-minor-mode) 
-(add-hook 'perl-mode-hook 'hs-minor-mode) 
-(add-hook 'php-mode-hook 'hs-minor-mode) 
-(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
 
-;;;;;;;;公用功能快捷键设置
-;;F1 CUA-Mode
+;; F1 CUA-Mode
 (global-set-key [f1] 'cua-mode)
-;;F2 undo
+;; F2 undo
 (global-set-key [f2] 'undo) 
-;;F3 toggle-read-only
+;; F3 toggle-read-only
 (global-set-key [f3] 'toggle-read-only) 
-;;F4 kill-this-buffer
+;; F4 kill-this-buffer
 (global-set-key [f4] 'kill-this-buffer)
-
-;;定义查找快捷键
-(global-set-key [f5] 'replace-regexp) ;;支持正则表达式
+;; F5 sr-speedbar toggle
+(global-set-key [f5] 'sr-speedbar-toggle)
+;; F6 replace-string
 (global-set-key [f6] 'replace-string)
-
-;;save-buffer 
+;; F11 eshell
+(global-set-key [f11] 'eshell) 
+;; F12 save-buffer 
 (global-set-key [f12] 'save-buffer);
-;;;;;;;;;;F10默认为选择菜单栏
-;;打开一个终端，可以绑定为：eshell,shell,terminal-emulator 
-;;(global-set-key [f12] 'eshell) 
 
 ;;绑定按键 
 (global-set-key [(meta ?/)] 'hippie-expand)
