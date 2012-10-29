@@ -6,38 +6,68 @@
 (setq-default cursor-type 'bar)
 ;; 没有提示音，也不闪屏。
 (setq ring-bell-function 'ignore)
-;; 自動保存設置 
-(setq auto-save-mode t)
 ;; 光标靠近鼠标时鼠标跳开
 (mouse-avoidance-mode 'animate)
-;; 去掉那个大大的工具栏
-;;(tool-bar-mode nil)
-;; 默认的主模式
+;; default major mode
 (setq default-major-mode 'text-mode)
 ;; 在minibuffer里启用自动补全函数和变量
 (icomplete-mode t)
-;; 语法高亮
+;; show match parenthesis
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+;; syntax highlight
 (global-font-lock-mode t)
-;;支持emacs和外部程序的粘贴
 (setq x-select-enable-clipboard t)
-;;Set default read only mode
-(setq toggle-read-only t)
-;;Set default tab width to 4 spaces
+;; Set default tab width to 4 spaces
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 4)
 
+;; input chinese by ibus
+;; only available in ubuntu
 (add-to-list 'load-path "/.emacs.d/plugins/ibus")
 (require 'ibus) 
 (add-hook 'after-init-hook 'ibus-mode-on) 
 
-;; Full Screen
+;; toggle full Screen
+;; only available in ubuntu 
 (defun toggle-fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
                                            nil
                                            'fullboth)))
 (global-set-key [(meta return)] 'toggle-fullscreen)
+
+;; bookmark plus
+(add-to-list 'load-path "~/.emacs.d/plugins/bookmark+")
+(require 'bookmark+)
+
+;; register
+(global-set-key [(control f2)] 'ska-point-to-register)
+(global-set-key [f2] 'ska-jump-to-register)
+(defun ska-point-to-register()
+  "Store cursorposition _fast_ in a register. 
+Use ska-jump-to-register to jump back to the stored 
+position."
+  (interactive)
+  (setq zmacs-region-stays t)
+  (point-to-register 8))
+
+(defun ska-jump-to-register()
+  "Switches between current cursorposition and position
+that was stored with ska-point-to-register."
+  (interactive)
+  (setq zmacs-region-stays t)
+  (let ((tmp (point-marker)))
+        (jump-to-register 8)
+        (set-register 8 tmp)))
+
+;; copy line function
+(defun copy-line(&optional arg)
+(interactive "p")
+(kill-line arg)
+(yank))
+(global-set-key (kbd "C-;") 'copy-line)
 
 ;;Color Theme
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
@@ -64,9 +94,6 @@
 (require 'sr-speedbar)
 
 ;; Cscope
-;;(add-hook 'c-mode-common-hook
-;;  '(lambda ()
-;;    (require 'xcscope)))
 (add-to-list 'load-path "~/.emacs.d/plugins/cscope")
 (require 'xcscope)
 
@@ -87,7 +114,7 @@
 (add-hook 'auto-complete-mode-hook (lambda () (add-to-list 'ac-sources 'ac-source-filename)))
 (set-face-background 'ac-candidate-face "lightgray")
 (set-face-underline 'ac-candidate-face "darkgray")
-(set-face-background 'ac-selection-face "steelblue") ;;; 设置比上面截图中更好看的背景颜色
+(set-face-background 'ac-selection-face "steelblue") 
 (define-key ac-completing-map "\M-n" 'ac-next)  ;;; 列表中通过按M-n来向下移动
 (define-key ac-completing-map "\M-p" 'ac-previous)
 (setq ac-auto-start 2)
@@ -113,42 +140,31 @@
 ;(setq py-python-command "python")
 ;(autoload 'python-mode "python-mode" "Python editing mode." t)
 
-;; 在 mode-line 中显示列号
-(setq column-number-mode t)
 ;; 使用 C-k 删除整行
 (setq-default kill-whole-line t)
 ;; 设置 kill-ring 的大小
 (setq kill-ring-max 50)
-;; 备份文件目录
-(setq backup-by-copying t) ; 自动备份
-;;自动备份目录~/.emacs.d/backup
-(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))) 
-(setq delete-old-versions t) ; 自动删除旧的备份文件
-(setq kept-new-versions 2) ; 保留最近的3个备份文件
-(setq kept-old-versions 1) ; 保留最早的2个备份文件
-(setq version-control t) ; 多次备份
-;; 不要问 yes-or-no，只问 y-or-n
+;; use y-or-n instead of yes-or-no
 (defalias 'yes-or-no-p 'y-or-n-p)
-;; 设置 emacs 的标题
+;; title text
 (setq frame-title-format "emacs@%b %f")
-;; 可以显示图片
-(auto-image-file-mode)
 ;; 高亮显示选中区域
 (transient-mark-mode t)
-;;;不要生成备份文件
+
 (setq-default make-backup-files nil)
-;;;; 显示行号
+;; show line number & column number
 (setq column-number-mode t)
 (setq line-number-mode t)
-;;;; 显示时间
+;; show time & date
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
+;; bookmark file, it just like browser's bookfile
+(global-set-key [f9] 'list-bookmarks)
+(global-set-key [(shift f9)] 'bookmark-set)
 
 ;; F1 CUA-Mode
 (global-set-key [f1] 'cua-mode)
-;; F2 undo
-(global-set-key [f2] 'undo) 
 ;; F3 toggle-read-only
 (global-set-key [f3] 'toggle-read-only) 
 ;; F4 kill-this-buffer
@@ -157,18 +173,18 @@
 (global-set-key [f5] 'sr-speedbar-toggle)
 ;; F6 replace-string
 (global-set-key [f6] 'replace-string)
-;; F11 eshell
-(global-set-key [f11] 'eshell) 
+;; F11 terminal
+(global-set-key [f11] 'term) 
 ;; F12 save-buffer 
 (global-set-key [f12] 'save-buffer);
 
-;;绑定按键 
 (global-set-key [(meta ?/)] 'hippie-expand)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes nil)
@@ -176,8 +192,8 @@
  '(scroll-bar-mode (quote right))
  '(tool-bar-mode nil))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "darkslategrey" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 136 :width normal :foundry "misc" :family "Ubuntu Mono")))))
