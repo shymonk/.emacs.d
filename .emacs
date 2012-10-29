@@ -41,10 +41,14 @@
 ;; bookmark plus
 (add-to-list 'load-path "~/.emacs.d/plugins/bookmark+")
 (require 'bookmark+)
+(setq bmkp-auto-light-when-set 'Any bookmark)
+(global-set-key [(control f2)] 'bookmark-set)
+(global-set-key [f2] 'bmkp-next-bookmark-this-file/buffer-repeat)
+
 
 ;; register
-(global-set-key [(control f2)] 'ska-point-to-register)
-(global-set-key [f2] 'ska-jump-to-register)
+;;(global-set-key [(control f2)] 'ska-point-to-register)
+;;(global-set-key [f2] 'ska-jump-to-register)
 (defun ska-point-to-register()
   "Store cursorposition _fast_ in a register. 
 Use ska-jump-to-register to jump back to the stored 
@@ -184,7 +188,7 @@ that was stored with ska-point-to-register."
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
+ '(bmkp-last-as-first-bookmark-file "/home/john/.emacs.bmk")
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes nil)
