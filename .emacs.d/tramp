@@ -8,4 +8,21 @@
   ("remote-path"
    ("/bin" "/usr/bin" "/usr/sbin" "/usr/local/bin"))
   ("remote-shell" "/bin/sh")
-  ("file-exists" "test -e")))
+  ("file-exists" "test -e"))
+ (["scpc" nil "ssh" nil]
+  nil)
+ (["scpc" nil "192.168.0.106" nil]
+  nil)
+ (["ssh" "root" "192.168.0.106" nil]
+  ("uname" "Linux 2.6.32-279.el6.i686")
+  ("test" "test")
+  ("remote-path"
+   ("/bin" "/usr/bin" "/usr/sbin" "/usr/local/bin"))
+  ("remote-shell" "/bin/sh")
+  ("file-exists" "test -e")
+  ("ls" "/bin/ls --color=never")
+  ("ls-dired" t)
+  ("stat" "\\stat")
+  ("id" "/usr/bin/id")
+  ("gid-integer" 0)
+  ("perl" nil)))
