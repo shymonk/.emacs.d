@@ -28,6 +28,14 @@
 ;; auto reload file
 (global-auto-revert-mode)
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            (set-variable 'py-indent-offset 4)
+            ;(set-variable 'py-smart-indentation nil)
+            (set-variable 'indent-tabs-mode nil)))
+
+
+
 ;; input chinese by ibus
 ;; only available in ubuntu
 (add-to-list 'load-path "/.emacs.d/plugins/ibus")
@@ -101,12 +109,12 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas/global-mode 1)
+;; tramp
+(require 'tramp)
+
 
 ;; Auto-complete
 (add-to-list 'load-path "~/.emacs.d/plugins/auto-complete")
-;(require 'auto-complete-config)
-;(add-to-list 'ac-dictionary-directories "~/.emacs.d/plugins/auto-complete/ac-dict")
-;(ac-config-default)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
 (setq-default ac-sources '(ac-source-words-in-same-mode-buffers))
@@ -193,7 +201,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "/home/john/.emacs.bmk")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
  '(custom-enabled-themes nil)
