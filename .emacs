@@ -1,5 +1,3 @@
-;; 避免多个客户端启动
-(server-start)
 ;; 关闭开机画面
 (setq inhibit-startup-message t)
 ;; 光标显示为一竖线
@@ -17,16 +15,32 @@
 (setq show-paren-style 'parentheses)
 ;; syntax highlight
 (global-font-lock-mode t)
+;; enable to paste from other app
 (setq x-select-enable-clipboard t)
-;; Set default tab width to 4 spaces
+;;Set default read only mode
+(setq toggle-read-only t)
+;;Set default tab width to 4 spaces
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 4)
+;; Set default directory when c+x c+f
+;;(setq default-directory "E:\\")
+;; auto reload file
+(global-auto-revert-mode)
 
 ;; input chinese by ibus
 ;; only available in ubuntu
 (add-to-list 'load-path "/.emacs.d/plugins/ibus")
 (require 'ibus) 
+
+;; open files by default read only mode
+(defun make-some-files-read-only ()
+  "when file opened is of a certain mode, make it read only"
+  (when (memq major-mode '(c++-mode emacs-lisp-mode text-mode python-mode
+                                    ruby-mode c-mode))
+    (toggle-read-only 1)))
+
+(add-hook 'find-file-hooks 'make-some-files-read-only)
 (add-hook 'after-init-hook 'ibus-mode-on) 
 
 ;; toggle full Screen
@@ -34,8 +48,7 @@
 (defun toggle-fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
-                                           nil
-                                           'fullboth)))
+                                           nil 'fullboth)))
 (global-set-key [(meta return)] 'toggle-fullscreen)
 
 ;; bookmark plus
@@ -45,27 +58,6 @@
 (global-set-key [(control f2)] 'bookmark-set)
 (global-set-key [f2] 'bmkp-next-bookmark-this-file/buffer-repeat)
 
-
-;; register
-;;(global-set-key [(control f2)] 'ska-point-to-register)
-;;(global-set-key [f2] 'ska-jump-to-register)
-(defun ska-point-to-register()
-  "Store cursorposition _fast_ in a register. 
-Use ska-jump-to-register to jump back to the stored 
-position."
-  (interactive)
-  (setq zmacs-region-stays t)
-  (point-to-register 8))
-
-(defun ska-jump-to-register()
-  "Switches between current cursorposition and position
-that was stored with ska-point-to-register."
-  (interactive)
-  (setq zmacs-region-stays t)
-  (let ((tmp (point-marker)))
-        (jump-to-register 8)
-        (set-register 8 tmp)))
-
 ;; copy line function
 (defun copy-line(&optional arg)
 (interactive "p")
@@ -73,7 +65,7 @@ that was stored with ska-point-to-register."
 (yank))
 (global-set-key (kbd "C-;") 'copy-line)
 
-;;Color Theme
+;; Color Theme
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (require 'color-theme)
 (color-theme-initialize)
@@ -100,6 +92,10 @@ that was stored with ska-point-to-register."
 ;; Cscope
 (add-to-list 'load-path "~/.emacs.d/plugins/cscope")
 (require 'xcscope)
+
+;; Whitespace
+(add-to-list 'load-path "~/.emacs.d/plugins/whitespace")
+(require 'whitespace)
 
 ;; Yasnippet
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
@@ -144,6 +140,15 @@ that was stored with ska-point-to-register."
 ;(setq py-python-command "python")
 ;(autoload 'python-mode "python-mode" "Python editing mode." t)
 
+
+;; set the default text coding system(write)
+(setq default-buffer-file-coding-system 'utf-8)
+
+;; set the default text coding system(read)
+;; (prefer-coding-system 'utf-8)
+
+
+
 ;; 使用 C-k 删除整行
 (setq-default kill-whole-line t)
 ;; 设置 kill-ring 的大小
@@ -154,7 +159,7 @@ that was stored with ska-point-to-register."
 (setq frame-title-format "emacs@%b %f")
 ;; 高亮显示选中区域
 (transient-mark-mode t)
-
+;; Disable backup and autosave
 (setq-default make-backup-files nil)
 ;; show line number & column number
 (setq column-number-mode t)
