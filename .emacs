@@ -1,3 +1,15 @@
+;; emacs setting
+;; hellojohn201@gmail.com
+
+;; F1  CUA-Mode
+;; F3  toggle-read-only
+;; F4  kill-this-buffer
+;; F5  sr-speedbar toggle
+;; F6  replace-string
+;; F10 python-shell
+;; F11 terminal
+;; F12 save-buffer 
+
 ;; 关闭开机画面
 (setq inhibit-startup-message t)
 ;; 光标显示为一竖线
@@ -66,6 +78,13 @@
 (global-set-key [(control f2)] 'bookmark-set)
 (global-set-key [f2] 'bmkp-next-bookmark-this-file/buffer-repeat)
 
+;; folding code
+(load-library "hideshow")
+(add-hook 'python-mode-hook (lambda () (hs-minor-mode 1)))
+(global-set-key (kbd "C--") 'hs-hide-all)
+(global-set-key (kbd "C-=") 'hs-show-all)
+(global-set-key (kbd "C-+") 'hs-toggle-hiding)
+
 ;; copy line function
 (defun copy-line(&optional arg)
 (interactive "p")
@@ -111,6 +130,37 @@
 (yas/global-mode 1)
 ;; tramp
 (require 'tramp)
+
+;; Tabbar
+(add-to-list 'load-path "~/.emacs.d/plugins/tabbar")
+(require 'tabbar)
+(tabbar-mode t)
+;;;; 设置tabbar外观
+;; 设置默认主题: 字体, 背景和前景颜色，大小
+(set-face-attribute 'tabbar-default nil
+                    :family "Vera Sans YuanTi Mono"
+                    :background "gray80"
+                    :foreground "gray30"
+                    :height 1.0)
+;; 设置左边按钮外观：外框框边大小和颜色
+(set-face-attribute 'tabbar-button nil
+                    :inherit 'tabbar-default
+                    :box '(:line-width 1 :color "gray30"))
+;; 设置当前tab外观：颜色，字体，外框大小和颜色
+(set-face-attribute 'tabbar-selected nil
+                    :inherit 'tabbar-default
+                    :foreground "DarkGreen"
+                    :background "LightGoldenrod"
+                    :box '(:line-width 2 :color "DarkGoldenrod")
+                    ;; :overline "black"
+                    ;; :underline "black"
+                    :weight 'bold)
+;; 设置非当前tab外观：外框大小和颜色
+(set-face-attribute 'tabbar-unselected nil
+                    :inherit 'tabbar-default
+                    :box '(:line-width 2 :color "gray70"))
+
+
 
 
 ;; Auto-complete
@@ -161,7 +211,6 @@
 (setq-default kill-whole-line t)
 ;; 设置 kill-ring 的大小
 (setq kill-ring-max 50)
-;; use y-or-n instead of yes-or-no
 (defalias 'yes-or-no-p 'y-or-n-p)
 ;; title text
 (setq frame-title-format "emacs@%b %f")
@@ -176,23 +225,18 @@
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
-;; bookmark file, it just like browser's bookfile
+
+(global-set-key [f1] 'cua-mode)
+(global-set-key [f3] 'toggle-read-only) 
+(global-set-key [f4] 'kill-this-buffer)
+
+(global-set-key [f5] 'sr-speedbar-toggle)
+(global-set-key [f6] 'replace-string)
 (global-set-key [f9] 'list-bookmarks)
 (global-set-key [(shift f9)] 'bookmark-set)
 
-;; F1 CUA-Mode
-(global-set-key [f1] 'cua-mode)
-;; F3 toggle-read-only
-(global-set-key [f3] 'toggle-read-only) 
-;; F4 kill-this-buffer
-(global-set-key [f4] 'kill-this-buffer)
-;; F5 sr-speedbar toggle
-(global-set-key [f5] 'sr-speedbar-toggle)
-;; F6 replace-string
-(global-set-key [f6] 'replace-string)
-;; F11 terminal
+(global-set-key [f10] 'python-shell)
 (global-set-key [f11] 'term) 
-;; F12 save-buffer 
 (global-set-key [f12] 'save-buffer);
 
 (global-set-key [(meta ?/)] 'hippie-expand)
