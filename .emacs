@@ -103,7 +103,6 @@
 (require 'linum)
 (global-linum-mode 1)
 
-
 ;; Highlight Symbol
 (add-to-list 'load-path "~/.emacs.d/plugins/highlight-symbol")
 (require 'highlight-symbol)
@@ -207,21 +206,16 @@
 
 
 
-;; 使用 C-k 删除整行
 (setq-default kill-whole-line t)
-;; 设置 kill-ring 的大小
 (setq kill-ring-max 50)
 (defalias 'yes-or-no-p 'y-or-n-p)
-;; title text
 (setq frame-title-format "emacs@%b %f")
 ;; 高亮显示选中区域
 (transient-mark-mode t)
 ;; Disable backup and autosave
 (setq-default make-backup-files nil)
-;; show line number & column number
 (setq column-number-mode t)
 (setq line-number-mode t)
-;; show time & date
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
