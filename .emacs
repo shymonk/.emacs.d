@@ -10,66 +10,60 @@
 ;; F11 terminal
 ;; F12 save-buffer 
 
-;; 关闭开机画面
-(setq inhibit-startup-message t)
-;; 光标显示为一竖线
-(setq-default cursor-type 'bar)
-;; 没有提示音，也不闪屏。
-(setq ring-bell-function 'ignore)
-;; 光标靠近鼠标时鼠标跳开
-(mouse-avoidance-mode 'animate)
-;; default major mode
-(setq default-major-mode 'text-mode)
-;; 在minibuffer里启用自动补全函数和变量
-(icomplete-mode t)
-;; show match parenthesis
-(show-paren-mode t)
-(setq show-paren-style 'parentheses)
-;; syntax highlight
-(global-font-lock-mode t)
-;; enable to paste from other app
-(setq x-select-enable-clipboard t)
-;;Set default read only mode
-(setq toggle-read-only t)
-;;Set default tab width to 4 spaces
-(setq default-tab-width 4)
-(setq-default indent-tabs-mode nil)
-(setq c-basic-offset 4)
-;; Set default directory when c+x c+f
-;;(setq default-directory "E:\\")
-;; auto reload file
-(global-auto-revert-mode)
 
-(add-hook 'python-mode-hook
-          (lambda ()
-            (set-variable 'py-indent-offset 4)
-            ;(set-variable 'py-smart-indentation nil)
-            (set-variable 'indent-tabs-mode nil)))
+;; config for *nix platform
 
+;; ibut imput method 
+;; (add-to-list 'load-path "/.emacs.d/plugins/ibus")
+;; (require 'ibus)
 
-
-;; input chinese by ibus
-;; only available in ubuntu
-(add-to-list 'load-path "/.emacs.d/plugins/ibus")
-(require 'ibus) 
-
-;; open files by default read only mode
-(defun make-some-files-read-only ()
-  "when file opened is of a certain mode, make it read only"
-  (when (memq major-mode '(c++-mode emacs-lisp-mode text-mode python-mode
-                                    ruby-mode c-mode))
-    (toggle-read-only 1)))
-
-(add-hook 'find-file-hooks 'make-some-files-read-only)
-(add-hook 'after-init-hook 'ibus-mode-on) 
-
-;; toggle full Screen
-;; only available in ubuntu 
+;; toggle fullscreen
 (defun toggle-fullscreen ()
   (interactive)
   (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
                                            nil 'fullboth)))
 (global-set-key [(meta return)] 'toggle-fullscreen)
+
+;; config for *nix and windows platform
+
+(setq inhibit-startup-message t)
+(setq-default cursor-type 'bar)
+(setq ring-bell-function 'ignore)
+(mouse-avoidance-mode 'animate)
+(setq default-major-mode 'text-mode)
+(icomplete-mode t)
+(show-paren-mode t) 
+(setq show-paren-style 'parentheses)
+(global-font-lock-mode t)
+(setq x-select-enable-clipboard t)
+(setq toggle-read-only t)
+(setq default-buffer-file-coding-system 'utf-8)
+;; set the default text coding system(read)
+;; (prefer-coding-system 'utf-8)
+(set-default 'truncate-lines t)
+(setq-default kill-whole-line t)
+(setq kill-ring-max 50)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(setq frame-title-format "emacs@%b %f")
+(transient-mark-mode t)
+(setq-default make-backup-files nil)
+(setq column-number-mode t)
+(setq line-number-mode t)
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(display-time)
+(set-fontset-font "fontset-default" 'gb18030'("΢���ź�" . "unicode-bmp"))
+(global-auto-revert-mode)
+(setq default-directory "E:\\")
+;; (desktop-save-mode 1) ;; open recently file
+
+
+(setq default-tab-width 4)
+(setq-default indent-tabs-mode nil)
+(setq c-basic-offset 4)
+(add-hook 'html-mode-hook (lambda () (setq sgml-basic-offset 4)))
+(add-hook 'python-mode-hook(lambda () (setq tab-width 4) (setq python-indent 4)))
+
 
 ;; bookmark plus
 (add-to-list 'load-path "~/.emacs.d/plugins/bookmark+")
@@ -85,18 +79,22 @@
 (global-set-key (kbd "C-=") 'hs-show-all)
 (global-set-key (kbd "C-+") 'hs-toggle-hiding)
 
-;; copy line function
+;; copy line
 (defun copy-line(&optional arg)
 (interactive "p")
 (kill-line arg)
 (yank))
 (global-set-key (kbd "C-;") 'copy-line)
 
+;; unicad
+(add-to-list 'load-path "~/.emacs.d/plugins/unicad")
+(require 'unicad)
+
 ;; Color Theme
 (add-to-list 'load-path "~/.emacs.d/plugins/color-theme-6.6.0")
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-subtle-hacker) 
+(color-theme-subtle-hacker)
 
 ;; Line Number
 (add-to-list 'load-path "~/.emacs.d/plugins/linum")
@@ -114,6 +112,9 @@
 ;; sr-speedbar
 (add-to-list 'load-path "~/.emacs.d/plugins/sr-speedbar")
 (require 'sr-speedbar)
+(setq sr-speedbar-width 30)
+(setq speedbar-show-unknown-files t)
+(setq dframe-update-speed t)
 
 ;; Cscope
 (add-to-list 'load-path "~/.emacs.d/plugins/cscope")
@@ -127,25 +128,23 @@
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
 (require 'yasnippet)
 (yas/global-mode 1)
-;; tramp
+
+;; Tramp
 (require 'tramp)
 
 ;; Tabbar
 (add-to-list 'load-path "~/.emacs.d/plugins/tabbar")
+;; (setq tabbar-buffer-groups-function nil)
 (require 'tabbar)
 (tabbar-mode t)
-;;;; 设置tabbar外观
-;; 设置默认主题: 字体, 背景和前景颜色，大小
 (set-face-attribute 'tabbar-default nil
                     :family "Vera Sans YuanTi Mono"
                     :background "gray80"
                     :foreground "gray30"
                     :height 1.0)
-;; 设置左边按钮外观：外框框边大小和颜色
 (set-face-attribute 'tabbar-button nil
                     :inherit 'tabbar-default
                     :box '(:line-width 1 :color "gray30"))
-;; 设置当前tab外观：颜色，字体，外框大小和颜色
 (set-face-attribute 'tabbar-selected nil
                     :inherit 'tabbar-default
                     :foreground "DarkGreen"
@@ -154,12 +153,9 @@
                     ;; :overline "black"
                     ;; :underline "black"
                     :weight 'bold)
-;; 设置非当前tab外观：外框大小和颜色
 (set-face-attribute 'tabbar-unselected nil
                     :inherit 'tabbar-default
                     :box '(:line-width 2 :color "gray70"))
-
-
 
 
 ;; Auto-complete
@@ -172,12 +168,11 @@
 (set-face-background 'ac-candidate-face "lightgray")
 (set-face-underline 'ac-candidate-face "darkgray")
 (set-face-background 'ac-selection-face "steelblue") 
-(define-key ac-completing-map "\M-n" 'ac-next)  ;;; 列表中通过按M-n来向下移动
+(define-key ac-completing-map "\M-n" 'ac-next)
 (define-key ac-completing-map "\M-p" 'ac-previous)
 (setq ac-auto-start 2)
 (setq ac-dwim t)
 (define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
-
 
 ;; Pymacs
 (add-to-list 'load-path "~/.emacs.d/plugins/pinard-Pymacs-4be2c15")
@@ -197,30 +192,21 @@
 ;(setq py-python-command "python")
 ;(autoload 'python-mode "python-mode" "Python editing mode." t)
 
+;; Pylint
+(setq python-check-command "pylint")
+(when (load "flymake" t)
+      (defun flymake-pylint-init ()
+        (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                           'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+          (list "epylint" (list local-file))))
+      (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pylint-init)))
 
-;; set the default text coding system(write)
-(setq default-buffer-file-coding-system 'utf-8)
 
-;; set the default text coding system(read)
-;; (prefer-coding-system 'utf-8)
-
-
-
-(setq-default kill-whole-line t)
-(setq kill-ring-max 50)
-(defalias 'yes-or-no-p 'y-or-n-p)
-(setq frame-title-format "emacs@%b %f")
-;; 高亮显示选中区域
-(transient-mark-mode t)
-;; Disable backup and autosave
-(setq-default make-backup-files nil)
-(setq column-number-mode t)
-(setq line-number-mode t)
-(setq display-time-24hr-format t)
-(setq display-time-day-and-date t)
-(display-time)
-
-(global-set-key [f1] 'cua-mode)
+(global-set-key [f1] 'python-check)
 (global-set-key [f3] 'toggle-read-only) 
 (global-set-key [f4] 'kill-this-buffer)
 
@@ -241,14 +227,17 @@
   ;; If there is more than one, they won't work right.
  '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
  '(column-number-mode t)
- '(cua-mode t nil (cua-base))
- '(custom-enabled-themes nil)
  '(display-time-mode t)
  '(scroll-bar-mode (quote right))
+ '(show-paren-mode t)
+ '(size-indication-mode t)
+ '(speedbar-frame-parameters (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0))))
  '(tool-bar-mode nil))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "darkslategrey" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 136 :width normal :foundry "misc" :family "Ubuntu Mono")))))
+ '(default ((t (:inherit nil :stipple nil :background "darkslategrey" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "outline" :family "Consolas"))))
+ '(whitespace-space ((((class color) (background dark)) (:background "darkslategrey" :foreground "darkgray")))))
+(put 'upcase-region 'disabled nil)
