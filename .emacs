@@ -65,12 +65,27 @@
 (add-hook 'python-mode-hook(lambda () (setq tab-width 4) (setq python-indent 4)))
 
 
+;; ibuffer
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(autoload 'ibuffer "ibuffer" "List buffers." t)
+(defun kill-other-buffers ()
+      "Kill all other buffers."
+      (interactive)
+      (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
 ;; bookmark plus
 (add-to-list 'load-path "~/.emacs.d/plugins/bookmark+")
 (require 'bookmark+)
 (setq bmkp-auto-light-when-set 'Any bookmark)
 (global-set-key [(control f2)] 'bookmark-set)
 (global-set-key [f2] 'bmkp-next-bookmark-this-file/buffer-repeat)
+
+;; markdown-mode
+(add-to-list 'load-path "~/.emacs.d/plugins/modes")
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
 ;; folding code
 (load-library "hideshow")
@@ -241,3 +256,4 @@
  '(default ((t (:inherit nil :stipple nil :background "darkslategrey" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 143 :width normal :foundry "outline" :family "Consolas"))))
  '(whitespace-space ((((class color) (background dark)) (:background "darkslategrey" :foreground "darkgray")))))
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
