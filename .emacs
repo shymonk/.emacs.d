@@ -94,6 +94,11 @@
 (global-set-key (kbd "C-=") 'hs-show-all)
 (global-set-key (kbd "C-+") 'hs-toggle-hiding)
 
+;; git-gutter
+(add-to-list 'load-path "~/.emacs.d/plugins/git-gutter")
+(require 'git-gutter)
+(global-git-gutter-mode +1)
+
 ;; copy line
 (defun copy-line(&optional arg)
 (interactive "p")
