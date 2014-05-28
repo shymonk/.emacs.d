@@ -1,7 +1,7 @@
-;; emacs setting
+;; emacs settings
 ;; hellojohn201@gmail.com
 
-;; F1  CUA-Mode
+;; F1  pylint
 ;; F3  toggle-read-only
 ;; F4  kill-this-buffer
 ;; F5  sr-speedbar toggle
@@ -38,13 +38,14 @@
 (setq x-select-enable-clipboard t)
 (setq toggle-read-only t)
 (setq default-buffer-file-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 ;; set the default text coding system(read)
 ;; (prefer-coding-system 'utf-8)
 (set-default 'truncate-lines t)
 (setq-default kill-whole-line t)
 (setq kill-ring-max 50)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(setq frame-title-format "emacs@%b %f")
+(setq frame-title-format "%f")
 (transient-mark-mode t)
 (setq-default make-backup-files nil)
 (setq column-number-mode t)
@@ -52,18 +53,18 @@
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
 (display-time)
-(set-fontset-font "fontset-default" 'gb18030'("Î¢ÈíÑÅºÚ" . "unicode-bmp"))
+(set-fontset-font "fontset-default" 'gb18030'("Hei" . "unicode-bmp"))
 (global-auto-revert-mode)
-(setq default-directory "E:\\")
-;; (desktop-save-mode 1) ;; open recently file
-
-
+(setq default-directory "~/Workspace/")
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 4)
 (add-hook 'html-mode-hook (lambda () (setq sgml-basic-offset 4)))
 (add-hook 'python-mode-hook(lambda () (setq tab-width 4) (setq python-indent 4)))
 
+;; for Mac keyboard
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier nil)
 
 ;; ibuffer
 (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -72,6 +73,17 @@
       "Kill all other buffers."
       (interactive)
       (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
+
+;; speedbar
+(setq sr-speedbar-auto-refresh nil)
+
+;; fci
+(add-to-list 'load-path "~/.emacs.d/plugins/fci")
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "SlateGrey")
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;; (global-fci-mode 1)  
 
 ;; bookmark plus
 (add-to-list 'load-path "~/.emacs.d/plugins/bookmark+")
@@ -90,6 +102,8 @@
 ;; folding code
 (load-library "hideshow")
 (add-hook 'python-mode-hook (lambda () (hs-minor-mode 1)))
+(add-hook 'javascript-mode-hook (lambda () (hs-minor-mode 1)))
+(add-hook 'html-mode-hook (lambda () (hs-minor-mode 1)))
 (global-set-key (kbd "C--") 'hs-hide-all)
 (global-set-key (kbd "C-=") 'hs-show-all)
 (global-set-key (kbd "C-+") 'hs-toggle-hiding)
@@ -100,10 +114,10 @@
 (global-git-gutter-mode +1)
 
 ;; copy line
-(defun copy-line(&optional arg)
-(interactive "p")
-(kill-line arg)
-(yank))
+(defun copy-line (&optional arg)
+  (interactive "p")
+  (kill-line arg)
+  (yank))
 (global-set-key (kbd "C-;") 'copy-line)
 
 ;; unicad
@@ -129,13 +143,6 @@
 (global-set-key [(control f8)] 'highlight-symbol-prev)
 (global-set-key [(meta f8)] 'highlight-symbol-prev)
 
-;; sr-speedbar
-(add-to-list 'load-path "~/.emacs.d/plugins/sr-speedbar")
-(require 'sr-speedbar)
-(setq sr-speedbar-width 30)
-(setq speedbar-show-unknown-files t)
-(setq dframe-update-speed t)
-
 ;; Cscope
 (add-to-list 'load-path "~/.emacs.d/plugins/cscope")
 (require 'xcscope)
@@ -145,9 +152,9 @@
 (require 'whitespace)
 
 ;; Yasnippet
-(add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-(require 'yasnippet)
-(yas/global-mode 1)
+;; (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
+;; (require 'yasnippet)
+;; (yas/global-mode 1)
 
 ;; Tramp
 (require 'tramp)
@@ -230,7 +237,7 @@
 (global-set-key [f3] 'toggle-read-only) 
 (global-set-key [f4] 'kill-this-buffer)
 
-(global-set-key [f5] 'sr-speedbar-toggle)
+(global-set-key [f5] 'speedbar)
 (global-set-key [f6] 'replace-string)
 (global-set-key [f9] 'list-bookmarks)
 (global-set-key [(shift f9)] 'bookmark-set)
@@ -241,17 +248,19 @@
 
 (global-set-key [(meta ?/)] 'hippie-expand)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.bmk")
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(column-number-mode t)
+ '(current-language-environment "UTF-8")
  '(display-time-mode t)
  '(scroll-bar-mode (quote right))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(speedbar-frame-parameters (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0))))
+ '(speedbar-update-flag nil)
  '(tool-bar-mode nil))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
