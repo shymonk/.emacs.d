@@ -80,8 +80,13 @@
       (interactive)
       (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
 
-;; speedbar
-(setq sr-speedbar-auto-refresh nil)
+;; sr-speedbar
+(add-to-list 'load-path "~/.emacs.d/plugins/sr-speedbar")
+(require 'sr-speedbar)
+(setq sr-speedbar-auto-refresh nil
+      sr-speedbar-width 30
+      speedbar-show-unknown-files t
+      dframe-update-speed t)
 
 ;; fci
 ;; (add-to-list 'load-path "~/.emacs.d/plugins/fci")
@@ -238,12 +243,19 @@
       (add-to-list 'flymake-allowed-file-name-masks
                '("\\.py\\'" flymake-pylint-init)))
 
+;; python-mode
+(add-to-list 'load-path "~/.emacs.d/plugins/python-mode")
+(setq py-install-directory "/usr/bin/python")
+(require 'python-mode)
+(autoload 'python-mode "python-mode" "Python Mode." t)
+(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
+(add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
 (global-set-key [f1] 'python-check)
 (global-set-key [f3] 'toggle-read-only) 
 (global-set-key [f4] 'kill-this-buffer)
 
-(global-set-key [f5] 'speedbar)
+(global-set-key [f5] 'sr-speedbar-toggle)
 (global-set-key [f6] 'replace-string)
 (global-set-key [f9] 'list-bookmarks)
 (global-set-key [(shift f9)] 'bookmark-set)
@@ -265,15 +277,13 @@
  '(scroll-bar-mode (quote right))
  '(show-paren-mode t)
  '(size-indication-mode t)
- '(speedbar-frame-parameters (quote ((minibuffer) (width . 30) (border-width . 0) (menu-bar-lines . 0) (tool-bar-lines . 0) (unsplittable . t) (left-fringe . 0))))
- '(speedbar-update-flag nil)
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "darkslategrey" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :foundry "apple" :family "Monaco"))))
+ '(default ((t (:inherit nil :stipple nil :background "darkslategrey" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "apple" :family "Monaco"))))
  '(whitespace-space ((((class color) (background dark)) (:background "darkslategrey" :foreground "darkgray")))))
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
