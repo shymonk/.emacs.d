@@ -11,11 +11,9 @@
 ;; F12 save-buffer 
 
 
-;; config for *nix platform
-
-;; ibut imput method 
-;; (add-to-list 'load-path "/.emacs.d/plugins/ibus")
-;; (require 'ibus)
+(add-to-list 'load-path "~/.emacs.d/plugins/exec-path")
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
 
 ;; toggle fullscreen
 (defun toggle-fullscreen ()
@@ -47,7 +45,7 @@
 (setq default-buffer-file-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 ;; set the default text coding system(read)
-;; (prefer-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 (set-default 'truncate-lines t)
 (setq-default kill-whole-line t)
 (setq kill-ring-max 50)
@@ -110,10 +108,31 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+;; web-mode
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(setq web-mode-engines-alist '(("django" . "\\.html\\'")))
+(defun custom-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 4)
+  (setq web-mode-css-indent-offset 4)
+  (setq web-mode-code-indent-offset 4)
+  (custom-set-faces
+   '(web-mode-block-control-face ((t (:inherit web-mode-preprocessor-face))))
+   '(web-mode-block-delimiter-face ((t (:inherit web-mode-block-control-face))))
+   '(web-mode-css-selector-face ((t (:inherit font-lock-function-name-face))))
+   '(web-mode-html-attr-name-face ((t (:inherit font-lock-variable-name-face))))
+   '(web-mode-html-tag-face ((t (:inherit font-lock-function-name-face))))
+   '(web-mode-keyword-face ((t (:inherit web-mode-preprocessor-face))))
+   '(web-mode-preprocessor-face ((t (:foreground "dodger blue"))))
+   '(web-mode-variable-name-face ((t (:inherit font-lock-reference-face))))))
+(add-hook 'web-mode-hook  'custom-web-mode-hook)
+
 ;; folding code
 (load-library "hideshow")
 (add-hook 'python-mode-hook (lambda () (hs-minor-mode 1)))
-(add-hook 'javascript-mode-hook (lambda () (hs-minor-mode 1)))
+(add-hook 'js-mode-hook (lambda () (hs-minor-mode 1)))
 (add-hook 'html-mode-hook (lambda () (hs-minor-mode 1)))
 (global-set-key (kbd "C--") 'hs-hide-all)
 (global-set-key (kbd "C-=") 'hs-show-all)
@@ -230,19 +249,6 @@
 ;(setq py-python-command "python")
 ;(autoload 'python-mode "python-mode" "Python editing mode." t)
 
-;; Pylint
-(setq python-check-command "pylint")
-(when (load "flymake" t)
-      (defun flymake-pylint-init ()
-        (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                           'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-          (list "epylint" (list local-file))))
-      (add-to-list 'flymake-allowed-file-name-masks
-               '("\\.py\\'" flymake-pylint-init)))
-
 ;; python-mode
 (add-to-list 'load-path "~/.emacs.d/plugins/python-mode")
 (setq py-install-directory "/usr/bin/python")
@@ -250,6 +256,12 @@
 (autoload 'python-mode "python-mode" "Python Mode." t)
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
+
+;; flymake
+(add-to-list 'load-path "~/.emacs.d/plugins/flymake")
+(require 'flymake-python-pyflakes)
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+
 
 (global-set-key [f1] 'python-check)
 (global-set-key [f3] 'toggle-read-only) 
