@@ -11,6 +11,10 @@
 ;; F12 save-buffer 
 
 
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 (add-to-list 'load-path "~/.emacs.d/plugins/exec-path")
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
@@ -28,6 +32,42 @@
   (interactive)
   (find-file "~/org/todo.org")
   )
+(defun emacs ()
+  (interactive)
+  (find-file "~/org/emacs.org")
+  )
+(defun sohu ()
+  (interactive)
+  (find-file "~/org/sohu/webmovie.org")
+  )
+
+;; dash
+(add-to-list 'load-path "~/.emacs.d/plugins/dash")
+(autoload 'dash-at-point "dash-at-point"
+          "Search the word at point with Dash." t nil)
+(global-set-key "\C-cd" 'dash-at-point)
+(global-set-key "\C-ce" 'dash-at-point-with-docset)
+
+;; ido
+(require 'ido)
+(ido-mode t)
+(ido-load-history)
+(setq ido-enable-flex-matching t
+      ido-everywhere t
+      ido-ignore-files '(".DS_Store"))
+
+;; etags
+(add-hook 'python-mode-hook
+  (lambda ()
+    (define-key python-mode-map (kbd "M-i") 'find-tag-other-window)
+  )
+)
+(defun create-tags (dir-name)
+     "Create tags file."
+     (interactive "DDirectory: ")
+     (eshell-command 
+      (format "find %s -type f -name \"*.py\" | etags -" dir-name)))
+
 
 ;; config for *nix and windows platform
 
@@ -81,9 +121,15 @@
 ;; sr-speedbar
 (add-to-list 'load-path "~/.emacs.d/plugins/sr-speedbar")
 (require 'sr-speedbar)
-(setq sr-speedbar-auto-refresh nil
-      sr-speedbar-width 30
+(global-set-key [f5] 'sr-speedbar-toggle)
+(global-set-key (kbd "C-\\") 'sr-speedbar-select-window)
+(setq speedbar-hide-button-brackets-flag t
+      speedbar-smart-directory-expand-flag t
       speedbar-show-unknown-files t
+      speedbar-use-images nil
+      sr-speedbar-auto-refresh nil
+      sr-speedbar-skip-other-window-p t
+      sr-speedbar-width 30
       dframe-update-speed t)
 
 ;; fci
@@ -124,8 +170,9 @@
    '(web-mode-css-selector-face ((t (:inherit font-lock-function-name-face))))
    '(web-mode-html-attr-name-face ((t (:inherit font-lock-variable-name-face))))
    '(web-mode-html-tag-face ((t (:inherit font-lock-function-name-face))))
-   '(web-mode-keyword-face ((t (:inherit web-mode-preprocessor-face))))
-   '(web-mode-preprocessor-face ((t (:foreground "dodger blue"))))
+   ;; '(web-mode-keyword-face ((t (:inherit web-mode-preprocessor-face))))
+   '(web-mode-preprocessor-face ((t (:inherit web-mode-keyword-face))))
+   ;; '(web-mode-preprocessor-face ((t (:foreground "dodger blue"))))
    '(web-mode-variable-name-face ((t (:inherit font-lock-reference-face))))))
 (add-hook 'web-mode-hook  'custom-web-mode-hook)
 
@@ -144,10 +191,12 @@
 (global-git-gutter-mode +1)
 
 ;; copy line
-(defun copy-line (&optional arg)
-  (interactive "p")
-  (kill-line arg)
-  (yank))
+(defun copy-line ()
+  "Copy current line, or current text selection."
+  (interactive)
+  (if (region-active-p)
+      (kill-ring-save (region-beginning) (region-end))
+    (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
 (global-set-key (kbd "C-;") 'copy-line)
 
 ;; unicad
@@ -257,17 +306,23 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
+(add-to-list 'load-path "~/.emacs.d/plugins/visual-regexp")
+(require 'visual-regexp)
+(define-key global-map (kbd "C-c r") 'vr/replace)
+(define-key global-map (kbd "C-c q") 'vr/query-replace)
+
 ;; flymake
 (add-to-list 'load-path "~/.emacs.d/plugins/flymake")
+(add-to-list 'load-path "~/.emacs.d/plugins/jshint-mode")
 (require 'flymake-python-pyflakes)
+(require 'flymake-jshint)
 (add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
-
+(add-hook 'js-mode-hook (lambda () (flymake-mode t)))
 
 (global-set-key [f1] 'python-check)
 (global-set-key [f3] 'toggle-read-only) 
 (global-set-key [f4] 'kill-this-buffer)
 
-(global-set-key [f5] 'sr-speedbar-toggle)
 (global-set-key [f6] 'replace-string)
 (global-set-key [f9] 'list-bookmarks)
 (global-set-key [(shift f9)] 'bookmark-set)
@@ -296,6 +351,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :background "darkslategrey" :foreground "wheat" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "apple" :family "Monaco"))))
+ '(web-mode-block-control-face ((t (:inherit web-mode-preprocessor-face))))
+ '(web-mode-block-delimiter-face ((t (:inherit web-mode-block-control-face))))
+ '(web-mode-css-selector-face ((t (:inherit font-lock-function-name-face))))
+ '(web-mode-html-attr-name-face ((t (:inherit font-lock-variable-name-face))))
+ '(web-mode-html-tag-face ((t (:inherit font-lock-function-name-face))))
+ '(web-mode-preprocessor-face ((t (:foreground "dodger blue"))))
+ '(web-mode-variable-name-face ((t (:inherit font-lock-reference-face))))
  '(whitespace-space ((((class color) (background dark)) (:background "darkslategrey" :foreground "darkgray")))))
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
