@@ -1,4 +1,4 @@
-g.emacs.d
+.emacs.d
 ========
 
-My emacs configuration, included all 3rd plugins.
+My emacs configuration according to popular emacs repo https://github.com/purcell/emacs.d
