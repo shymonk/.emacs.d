@@ -23,6 +23,7 @@
 
 (require 'init-dash)
 (require 'init-ido)
+(require 'init-fiplr)
 (require 'init-etags)
 (require 'init-speedbar)
 (require 'init-ibuffer)
@@ -33,7 +34,6 @@
 (require 'init-linum)
 (require 'init-highlight)
 (require 'init-cscope)
-(require 'init-ssh)
 (require 'init-tabbar)
 (require 'init-auto-complete)
 (require 'init-visual-regexp)
@@ -42,8 +42,10 @@
 (require 'init-dired)
 
 (require 'init-ssh)
+(require 'init-shell)
 (require 'init-org)
 (require 'init-theme)
+(require 'init-window)
 
 (require 'init-markdown)
 (require 'init-webmode)
@@ -106,6 +108,7 @@
  '(bmkp-last-as-first-bookmark-file "/Users/john/.emacs.d/bookmarks")
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
+ '(cursor-type (quote bar) t)
  '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
  '(custom-safe-themes (quote ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
  '(display-time-mode t)

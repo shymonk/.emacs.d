@@ -7,4 +7,8 @@
       (interactive)
       (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
 
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-after-kill-buffer-p t)
+
 (provide 'init-ibuffer)
