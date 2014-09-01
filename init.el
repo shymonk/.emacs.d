@@ -21,6 +21,7 @@
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
+(require 'init-filetree)
 (require 'init-dash)
 (require 'init-ido)
 (require 'init-fiplr)
