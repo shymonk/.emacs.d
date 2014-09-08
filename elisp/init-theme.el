@@ -9,7 +9,7 @@
 (require 'color-theme-sanityinc-solarized)
 
 
-(color-theme-sanityinc-solarized-dark)
+(setq-default custom-enabled-themes '(color-theme-sanityinc-solarized-dark))
 
 (defun solarized ()
   "Activate solarized color theme."

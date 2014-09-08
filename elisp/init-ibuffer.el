@@ -11,4 +11,9 @@
 (setq uniquify-buffer-name-style 'forward)
 (setq uniquify-after-kill-buffer-p t)
 
+(defun switch-to-other-buffer ()
+  (interactive)
+  (switch-to-buffer (other-buffer (current-buffer) 1)))
+(global-set-key [f1] 'switch-to-other-buffer)
+
 (provide 'init-ibuffer)

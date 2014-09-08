@@ -4,7 +4,6 @@
 (setq mac-option-modifier nil)
 
 ;; Global key-bind
-(global-set-key [f1] 'python-check)
 (global-set-key [f3] 'toggle-read-only) 
 (global-set-key [f4] 'kill-this-buffer)
 
