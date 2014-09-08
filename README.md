@@ -1,4 +1,4 @@
 .emacs.d
 ========
 
-My emacs configuration according to popular emacs repo https://github.com/purcell/emacs.d
+This is my favouriate Emacs Configuration, it is mainly used for python development.
