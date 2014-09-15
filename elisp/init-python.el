@@ -18,13 +18,7 @@
 (add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
 (add-to-list 'interpreter-mode-alist '("python" . python-mode))
 
-(add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
-
-;; Init python-direx
-(eval-after-load "python"
-    '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
-(add-hook 'jedi-mode-hook 'jedi-direx:setup)
 
 ;; A shortcut to enter site-packages
 (defun site-packages ()
