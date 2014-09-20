@@ -112,6 +112,7 @@
  '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
  '(custom-safe-themes (quote ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
  '(display-time-mode t)
+ '(global-hl-line-mode t)
  '(scroll-bar-mode (quote right))
  '(show-paren-mode t)
  '(size-indication-mode t)
