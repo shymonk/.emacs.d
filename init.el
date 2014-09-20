@@ -50,6 +50,7 @@
 (require 'init-webmode)
 (require 'init-python)
 
+(require 'init-search)
 (require 'init-editing-utils)
 (require 'init-binding)
 (require 'init-misc)
