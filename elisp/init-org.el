@@ -4,6 +4,16 @@
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
 
+;; this line activates ditaa
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ditaa . t)))
+
+(defun initel ()
+  (interactive)
+  (find-file (expand-file-name "init.el" user-emacs-directory))
+  )
+
 (defun todo ()
   (interactive)
   (find-file (expand-file-name "todo.org" org-root))
