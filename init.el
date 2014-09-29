@@ -46,6 +46,7 @@
 (require 'init-theme)
 (require 'init-window)
 
+(require 'init-image)
 (require 'init-markdown)
 (require 'init-webmode)
 (require 'init-python)
