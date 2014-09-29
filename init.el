@@ -83,7 +83,10 @@
 (setq line-number-mode t)
 (setq display-time-24hr-format t)
 (display-time)
-(set-fontset-font "fontset-default" 'gb18030'("Hei" . "unicode-bmp"))
+
+(if window-system
+    (set-fontset-font t 'gb18030' ("Hei" . "unicode-bmp")))
+
 (global-auto-revert-mode)
 (setq default-directory "~/Workspace/")
 (setq default-tab-width 4)
