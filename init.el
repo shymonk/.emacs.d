@@ -25,7 +25,6 @@
 (require 'init-dash)
 (require 'init-ido)
 (require 'init-fiplr)
-(require 'init-etags)
 (require 'init-ibuffer)
 (require 'init-bookmark)
 (require 'init-git)
