@@ -1,12 +1,18 @@
 ;; web-mode
 
 (require-package 'web-mode)
+(require-package 'sass-mode)
 
 (require 'web-mode)
+(autoload 'scss-mode "scss-mode")
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tmpl?\\'" . web-mode))
 (setq web-mode-engines-alist '(("django" . "\\.html\\'")))
+(setq web-mode-engines-alist '(("jinja2" . "\\.tmpl\\'")))
+
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 
 (defun custom-web-mode-hook ()
   "Hooks for Web mode."
