@@ -9,6 +9,9 @@
  'org-babel-load-languages
  '((ditaa . t)))
 
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+
 (defun initel ()
   (interactive)
   (find-file (expand-file-name "init.el" user-emacs-directory))
