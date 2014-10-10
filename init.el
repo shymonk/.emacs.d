@@ -28,22 +28,22 @@
 (require 'init-ibuffer)
 (require 'init-bookmark)
 (require 'init-git)
-(require 'init-hideshow)
 ;; (require 'init-unicode)
 (require 'init-linum)
 (require 'init-highlight)
 (require 'init-cscope)
-(require 'init-tabbar)
 (require 'init-auto-complete)
 (require 'init-visual-regexp)
 (require 'init-flymake)
 (require 'init-dired)
+(require 'init-wget)
 
 (require 'init-ssh)
 (require 'init-shell)
 (require 'init-org)
 (require 'init-theme)
 (require 'init-window)
+(require 'init-gui-frames)
 
 (require 'init-image)
 (require 'init-markdown)
@@ -108,7 +108,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "/Users/john/.emacs.d/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
  '(cursor-type (quote bar) t)
@@ -116,7 +116,6 @@
  '(custom-safe-themes (quote ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
  '(display-time-mode t)
  '(global-hl-line-mode t)
- '(scroll-bar-mode (quote right))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
