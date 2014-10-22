@@ -8,5 +8,11 @@
 ;; whitespace-mode
 (require 'whitespace)
 
+(defun copy-file-path ()
+  "Copy buffer's full path to kill ring"
+  (interactive)
+  (message (buffer-file-name))
+  (when buffer-file-name
+    (kill-new buffer-file-name)))
 
 (provide 'init-misc)
