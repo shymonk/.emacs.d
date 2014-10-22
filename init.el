@@ -46,6 +46,7 @@
 (require 'init-gui-frames)
 
 (require 'init-image)
+(require 'init-json)
 (require 'init-markdown)
 (require 'init-webmode)
 (require 'init-python)
