@@ -8,8 +8,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tmpl?\\'" . web-mode))
-(setq web-mode-engines-alist '(("jinja2" . "\\.html\\'")))
-(setq web-mode-engines-alist '(("jinja2" . "\\.tmpl\\'")))
+(setq web-mode-engines-alist '(("django" . "\\.html\\'")))
+(setq web-mode-engines-alist '(("django" . "\\.tmpl\\'")))
 
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss?\\'" . sass-mode))
