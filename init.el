@@ -32,6 +32,7 @@
 (require 'init-linum)
 (require 'init-highlight)
 (require 'init-cscope)
+(require 'init-yasnippet)
 (require 'init-auto-complete)
 (require 'init-visual-regexp)
 (require 'init-flymake)
@@ -97,13 +98,6 @@
 (setq c-basic-offset 4)
 (add-hook 'html-mode-hook (lambda () (setq sgml-basic-offset 4)))
 (add-hook 'python-mode-hook(lambda () (setq tab-width 4) (setq python-indent 4)))
-
-
-;; Yasnippet
-;; (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
-;; (require 'yasnippet)
-;; (yas/global-mode 1)
-
 
 
 (custom-set-variables

@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: coding
+# key: coding
+# binding: direct-keybinding
+# --
+#!/usr/bin/env python
+# coding: utf-8
