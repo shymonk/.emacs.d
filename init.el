@@ -44,6 +44,7 @@
 (require 'init-theme)
 (require 'init-window)
 (require 'init-gui-frames)
+(require 'init-speedbar)
 
 (require 'init-image)
 (require 'init-json)
