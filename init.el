@@ -1,14 +1,13 @@
 ;; emacs settings
 ;; hellojohn201@gmail.com
 
-:(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-a-mac* (eq system-type 'darwin))
 
 ;;----------------------------------------------------------------------------
 ;; Initialize load-path by "~/.emacs.d/elisp"
 ;;----------------------------------------------------------------------------
 
 (add-to-list 'load-path (expand-file-name "elisp" user-emacs-directory))
-
 
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
