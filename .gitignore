@@ -1,12 +1,16 @@
 
 
 elisp/init-search.el
-init.el
 .python-environments/
 ac-comphist.dat
 auto-save-list/
+image-dired/
+thumbs/
 bookmarks
 elpa/
 eshell/
 tramp
 tutorial/
+
+history
+
