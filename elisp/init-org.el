@@ -3,6 +3,8 @@
 
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
+(setq org-export-with-section-numbers nil)
+(setq org-export-with-toc nil)
 
 ;; this line activates ditaa
 (org-babel-do-load-languages
@@ -25,5 +27,12 @@
   (interactive)
   (find-file (expand-file-name "emacs.org" org-root))
   )
+
+;; A shotcut to enter blog posts dir
+(defun orgroot ()
+  (interactive)
+  (find-file-other-window org-root)
+  )
+
 
 (provide 'init-org)
