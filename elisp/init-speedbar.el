@@ -5,6 +5,7 @@
 ;; TODO: fix bug about toggle in neotree
 (global-set-key (kbd "M-s M-s") 'sr-speedbar-toggle)
 (setq speedbar-use-images nil)
+(setq speedbar-tag-hierarchy-method nil)
 (setq sr-speedbar-width 30)
 (setq sr-speedbar-skip-other-window-p t)
 (setq sr-speedbar-auto-refresh t)
