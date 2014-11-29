@@ -37,6 +37,7 @@
 (require 'init-flymake)
 (require 'init-dired)
 (require 'init-wget)
+(require 'init-session)
 
 (require 'init-ssh)
 (require 'init-shell)
@@ -62,6 +63,7 @@
 ;; config for *nix and windows platform
 
 (setq inhibit-startup-message t)
+(setq debug-on-error t)
 (mouse-avoidance-mode 'animate)
 (setq default-major-mode 'text-mode)
 (icomplete-mode t)
@@ -81,8 +83,10 @@
 (setq frame-title-format "%f")
 (transient-mark-mode t)
 (setq-default make-backup-files nil)
+
 (setq column-number-mode t)
 (setq line-number-mode t)
+
 (setq display-time-24hr-format t)
 (display-time)
 
