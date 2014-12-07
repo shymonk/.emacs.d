@@ -24,6 +24,7 @@
 ;; Preserve backward-kill-word
 ;;----------------------------------------------------------------------------
 (require 'virtualenvwrapper)
+(defalias 'workon 'venv-workon)
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
 (venv-initialize-eshell) ;; if you want eshell support
 (setq venv-location "/Users/john/.virtualenvs/")
