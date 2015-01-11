@@ -17,3 +17,4 @@ history
 .emacs.desktop*
 .session
 frame-restore-parameters
+*.elc
