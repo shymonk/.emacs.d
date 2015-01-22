@@ -4,6 +4,8 @@
 (require-package 'magit)
 
 (require 'magit)
+(defalias 'gitblame 'magit-blame-mode)
+
 (require 'git-gutter)
 (global-git-gutter-mode +1)
 
