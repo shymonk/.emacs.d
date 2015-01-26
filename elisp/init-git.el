@@ -5,6 +5,8 @@
 
 (require 'magit)
 (defalias 'gitblame 'magit-blame-mode)
+(defalias 'gitlog 'magit-log)
+
 
 (require 'git-gutter)
 (global-git-gutter-mode +1)
