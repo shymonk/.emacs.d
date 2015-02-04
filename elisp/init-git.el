@@ -6,6 +6,7 @@
 (require 'magit)
 (defalias 'gitblame 'magit-blame-mode)
 (defalias 'gitlog 'magit-log)
+(defalias 'gitco 'magit-checkout)
 
 
 (require 'git-gutter)
