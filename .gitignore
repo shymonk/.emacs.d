@@ -19,3 +19,5 @@ history
 frame-restore-parameters
 *.elc
 projectile-bookmarks.eld
+projectile.cache
+.mc-lists.el
