@@ -23,7 +23,6 @@
 (require 'init-filetree)
 (require 'init-dash)
 (require 'init-ido)
-(require 'init-fiplr)
 (require 'init-ibuffer)
 (require 'init-bookmark)
 (require 'init-git)
@@ -38,6 +37,7 @@
 (require 'init-dired)
 (require 'init-wget)
 (require 'init-session)
+(require 'init-project)
 
 (require 'init-ssh)
 (require 'init-shell)
@@ -63,7 +63,9 @@
 ;; config for *nix and windows platform
 
 (setq inhibit-startup-message t)
-(setq debug-on-error t)
+;; (setq debug-on-error t)
+;; (setq debug-ignored-errors nil)
+(setq debug-on-error nil)
 (mouse-avoidance-mode 'animate)
 (setq default-major-mode 'text-mode)
 (icomplete-mode t)
@@ -83,6 +85,7 @@
 (setq frame-title-format "%f")
 (transient-mark-mode t)
 (setq-default make-backup-files nil)
+(setq paradox-github-token "9740991da1cd7b31e49b612403ffcc0a7c0c4cb8")
 
 (setq column-number-mode t)
 (setq line-number-mode t)
@@ -91,12 +94,12 @@
 (display-time)
 
 (if window-system
-    (set-fontset-font t 'gb18030' ("Hei" . "unicode-bmp"))
-    (setq global-hl-line-mode t)
+  (setq global-hl-line-mode t)
   )
+(set-fontset-font "fontset-default" 'han '("STHeiti"))
 
 (global-auto-revert-mode)
-(setq default-directory "~/Workspace/")
+(setq default-directory "~/workspace/")
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 4)

@@ -1,6 +1,7 @@
 (setq org-log-done 'time)
 (setq org-root "~/org/")
 
+(setq org-support-shift-select t)
 (setq org-src-fontify-natively t)
 (setq org-src-tab-acts-natively t)
 (setq org-export-with-section-numbers nil)
