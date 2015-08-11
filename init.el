@@ -52,6 +52,7 @@
 (require 'init-markdown)
 (require 'init-webmode)
 (require 'init-python)
+(require 'init-lua)
 (require 'init-httpd)
 
 (require 'init-search)
