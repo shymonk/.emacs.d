@@ -1,5 +1,19 @@
-;; emacs settings
-;; hellojohn201@gmail.com
+;;;; shymonk's .emacs file
+; Fri Jul 31 2015
+
+; Each section in this file is introduced by a
+; line beginning with four semicolons; and each
+; entry is introduced by a line beginning with
+; three semicolons.
+
+
+;;;; The Help Key
+; Control-h is the help key;
+; after typing control-h, type a letter to
+; indicate the subject about which you want help.
+; For an explanation of the help facility,
+; type control-h two times in a row.
+
 
 (defconst *is-a-mac* (eq system-type 'darwin))
 
@@ -36,7 +50,6 @@
 (require 'init-flymake)
 (require 'init-dired)
 (require 'init-wget)
-(require 'init-session)
 (require 'init-project)
 
 (require 'init-ssh)
@@ -114,13 +127,16 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "/Users/john/.emacs.d/bookmarks")
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
  '(cursor-type (quote bar) t)
  '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
  '(custom-safe-themes (quote ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
  '(display-time-mode t)
+ '(paradox-automatically-star t)
+ '(safe-local-variable-values (quote ((encoding . utf-8) (project-venv-name . "bee") (project-venv-name . "wcms"))))
+ '(session-use-package t nil (session))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
@@ -129,4 +145,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "apple" :family "Monaco")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 150 :width normal :foundry "apple" :family "Monaco"))))
+ '(web-mode-block-control-face ((t (:inherit web-mode-preprocessor-face))))
+ '(web-mode-block-delimiter-face ((t (:inherit web-mode-block-control-face))))
+ '(web-mode-css-selector-face ((t (:inherit font-lock-function-name-face))))
+ '(web-mode-html-attr-name-face ((t (:inherit font-lock-variable-name-face))))
+ '(web-mode-html-tag-face ((t (:inherit font-lock-function-name-face))))
+ '(web-mode-preprocessor-face ((t (:inherit web-mode-keyword-face))))
+ '(web-mode-variable-name-face ((t (:inherit font-lock-reference-face)))))
+(put 'erase-buffer 'disabled nil)
+(put 'downcase-region 'disabled nil)
