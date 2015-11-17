@@ -4,8 +4,6 @@
 
 (require 'ag)
 (setq ag-highlight-search t)
-(setq ag-reuse-window 't)
-(setq ag-reuse-buffers 't)
 (setq ag-arguments (quote ("--python" "--line-number" "--smart-case" "--nogroup" "--column" "--")))
 
 
