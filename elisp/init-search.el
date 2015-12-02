@@ -4,7 +4,6 @@
 
 (require 'ag)
 (setq ag-highlight-search t)
-(setq ag-arguments (quote ("--python" "--line-number" "--smart-case" "--nogroup" "--column" "--")))
 
 
 (defalias 'ag 'ag-project)
