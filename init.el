@@ -1,11 +1,6 @@
 ;;;; shymonk's .emacs file
 ; Fri Jul 31 2015
 
-; Each section in this file is introduced by a
-; line beginning with four semicolons; and each
-; entry is introduced by a line beginning with
-; three semicolons.
-
 
 ;;;; The Help Key
 ; Control-h is the help key;
@@ -14,6 +9,13 @@
 ; For an explanation of the help facility,
 ; type control-h two times in a row.
 
+
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 
 (defconst *is-a-mac* (eq system-type 'darwin))
 
@@ -38,7 +40,7 @@
 (require 'init-dash)
 (require 'init-ido)
 (require 'init-ibuffer)
-(require 'init-bookmark)
+;; (require 'init-bookmark)
 (require 'init-git)
 ;; (require 'init-unicode)
 (require 'init-linum)
@@ -56,21 +58,24 @@
 (require 'init-shell)
 (require 'init-org)
 (require 'init-theme)
-(require 'init-window)
 (require 'init-gui-frames)
 (require 'init-speedbar)
 
 (require 'init-image)
 (require 'init-json)
 (require 'init-markdown)
+(require 'init-yaml)
 (require 'init-webmode)
 (require 'init-python)
+(require 'init-go)
 (require 'init-lua)
+(require 'init-java)
 (require 'init-httpd)
 
 (require 'init-search)
 (require 'init-editing-utils)
 (require 'init-binding)
+(require 'init-window)
 (require 'init-misc)
 
 
@@ -78,9 +83,8 @@
 ;; config for *nix and windows platform
 
 (setq inhibit-startup-message t)
-;; (setq debug-on-error t)
+(setq debug-on-error t)
 ;; (setq debug-ignored-errors nil)
-(setq debug-on-error nil)
 (mouse-avoidance-mode 'animate)
 (setq default-major-mode 'text-mode)
 (icomplete-mode t)
@@ -127,15 +131,24 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "/Users/john/.emacs.d/bookmarks")
+ '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
- '(cursor-type (quote bar) t)
+ '(cursor-type (quote bar))
  '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
- '(custom-safe-themes (quote ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
+ '(custom-safe-themes
+   (quote
+    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
  '(display-time-mode t)
+ '(package-selected-packages
+   (quote
+    (markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet yaml-mode xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd session scala-mode sass-mode python-mode pymacs projectile-speedbar projectile powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode less-css-mode know-your-http-well json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes flymake-jshint fiplr f expand-region exec-path-from-shell edit-server direx dired+ dash-at-point color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized bug-hunter bookmark+ bm ag)))
  '(paradox-automatically-star t)
- '(safe-local-variable-values (quote ((encoding . utf-8) (project-venv-name . "bee") (project-venv-name . "wcms"))))
+ '(safe-local-variable-values
+   (quote
+    ((encoding . utf-8)
+     (project-venv-name . "bee")
+     (project-venv-name . "wcms"))))
  '(session-use-package t nil (session))
  '(show-paren-mode t)
  '(size-indication-mode t)
@@ -155,3 +168,4 @@
  '(web-mode-variable-name-face ((t (:inherit font-lock-reference-face)))))
 (put 'erase-buffer 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)

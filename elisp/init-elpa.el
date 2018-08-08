@@ -1,6 +1,4 @@
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(setq package-archives '(("melpa" . "https://stable.melpa.org/packages/")))
 
 
 (defun require-package (package &optional min-version no-refresh)

@@ -4,10 +4,15 @@
  visible-bell t)
 
 
+;;----------------------------------------------------------------------------
 ;; Set mark
+;;----------------------------------------------------------------------------
 (global-set-key (kbd "C-.") 'set-mark-command)
 
+
+;;----------------------------------------------------------------------------
 ;; Newline
+;;----------------------------------------------------------------------------
 (global-set-key (kbd "RET") 'newline-and-indent)
 (defun shymonk/newline-at-end-of-line ()
   "Move to end of line, enter a newline, and reindent."
@@ -15,7 +20,8 @@
   (move-end-of-line 1)
   (newline-and-indent))
 
-(global-set-key (kbd "<S-return>") 'sanityinc/newline-at-end-of-line)
+(global-set-key (kbd "<S-return>") 'shymonk/newline-at-end-of-line)
+
 
 ;;----------------------------------------------------------------------------
 ;; Expand region
@@ -24,7 +30,9 @@
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 
-;; copy line
+;;----------------------------------------------------------------------------
+;; Copy line
+;;----------------------------------------------------------------------------
 (defun copy-line ()
   "Copy current line, or current text selection."
   (interactive)
@@ -32,6 +40,13 @@
       (kill-ring-save (region-beginning) (region-end))
     (kill-ring-save (line-beginning-position) (line-beginning-position 2))))
 (global-set-key (kbd "C-;") 'copy-line)
+
+
+;;----------------------------------------------------------------------------
+;; Edit server which interact with chrome extension
+;;----------------------------------------------------------------------------
+(require 'edit-server)
+(edit-server-start)
 
 
 (provide 'init-editing-utils)
