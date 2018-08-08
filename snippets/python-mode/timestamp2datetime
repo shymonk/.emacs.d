@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: timestamp2datetime
+# key: timestamp2datetime
+# binding: direct-keybinding
+# --
+import datetime
+datetime.datetime.fromtimestamp(int()).strftime('%Y-%m-%d %H:%M:%S')

@@ -1,0 +1,7 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: pprint
+# key: pprint
+# binding: direct-keybinding
+# --
+from pprint import pprint
+pprint()
