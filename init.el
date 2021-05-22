@@ -142,7 +142,7 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet yaml-mode xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd session scala-mode sass-mode python-mode pymacs projectile-speedbar projectile powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode less-css-mode know-your-http-well json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes flymake-jshint fiplr f expand-region exec-path-from-shell edit-server direx dired+ dash-at-point color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized bug-hunter bookmark+ bm ag)))
+    (go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet yaml-mode xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd session scala-mode sass-mode python-mode pymacs projectile-speedbar projectile powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode less-css-mode know-your-http-well json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes flymake-jshint fiplr f expand-region exec-path-from-shell edit-server direx dired+ dash-at-point color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized bug-hunter bookmark+ bm ag)))
  '(paradox-automatically-star t)
  '(safe-local-variable-values
    (quote

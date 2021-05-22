@@ -2,13 +2,20 @@
 ;; https://github.com/dominikh/yasnippet-go
 
 ;; (define-key ac-mode-map (kbd "TAB") 'auto-complete)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize)
+  (exec-path-from-shell-copy-env "GOPATH"))
 
 (require 'go-mode)
 (require 'go-add-tags)
 (require 'go-eldoc)
-;; (require 'go-autocomplete)
-;; (require 'auto-complete-config)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
 (require 'golint)
+
+(add-to-list 'load-path "~/gocode/src/github.com/dougm/goflymake")
+(require 'go-flymake)
 
 
 (autoload 'go-mode "go-mode" nil t)

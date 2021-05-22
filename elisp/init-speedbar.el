@@ -19,5 +19,6 @@
   )
 (define-key speedbar-mode-map (kbd "C-c C-c") 'sr-speedbar-change-root)
 (global-set-key [f5] 'sr-speedbar-toggle)
+(setq speedbar-directory-unshown-regexp "^\\(CVS\\|RCS\\|SCCS\\|\\.\\.*$\\)\\'")
 
 (provide 'init-speedbar)
