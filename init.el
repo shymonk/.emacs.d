@@ -37,43 +37,42 @@
 ;;----------------------------------------------------------------------------
 
 (require 'init-filetree)
-(require 'init-dash)
+;; (require 'init-dash)
 (require 'init-ido)
 (require 'init-ibuffer)
 ;; (require 'init-bookmark)
 (require 'init-git)
 ;; (require 'init-unicode)
 (require 'init-linum)
-(require 'init-highlight)
+;;(require 'init-highlight)
 (require 'init-cscope)
 (require 'init-yasnippet)
 (require 'init-auto-complete)
 (require 'init-visual-regexp)
-(require 'init-flymake)
-(require 'init-dired)
-(require 'init-wget)
-(require 'init-project)
+;; (require 'init-flymake)
+;; (require 'init-dired)
+;; (require 'init-wget)
+;; (require 'init-project)
 
 (require 'init-ssh)
 (require 'init-shell)
 (require 'init-org)
-(require 'init-theme)
+;; (require 'init-theme)
 (require 'init-gui-frames)
-(require 'init-speedbar)
+;; (require 'init-speedbar)
 
 (require 'init-image)
 (require 'init-json)
 (require 'init-markdown)
-(require 'init-yaml)
-(require 'init-webmode)
-(require 'init-python)
-(require 'init-go)
-(require 'init-lua)
-(require 'init-java)
-(require 'init-httpd)
+;; (require 'init-yaml)
+;; (require 'init-webmode)
+;; (require 'init-python)
+;; (require 'init-go)
+;; (require 'init-lua)
+;; (require 'init-httpd)
 
 (require 'init-search)
-(require 'init-editing-utils)
+;; (require 'init-editing-utils)
 (require 'init-binding)
 (require 'init-window)
 (require 'init-misc)
@@ -115,7 +114,7 @@
 (if window-system
   (setq global-hl-line-mode t)
   )
-(set-fontset-font "fontset-default" 'han '("STHeiti"))
+;;(set-fontset-font "fontset-default" 'han '("STHeiti"))
 
 (global-auto-revert-mode)
 (setq default-directory "~/workspace/")
@@ -131,7 +130,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
+ ;; '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
  '(cursor-type (quote bar))
@@ -142,14 +141,14 @@
  '(display-time-mode t)
  '(package-selected-packages
    (quote
-    (go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet yaml-mode xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd session scala-mode sass-mode python-mode pymacs projectile-speedbar projectile powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode less-css-mode know-your-http-well json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes flymake-jshint fiplr f expand-region exec-path-from-shell edit-server direx dired+ dash-at-point color-theme-solarized color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized bug-hunter bookmark+ bm ag)))
+    (go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag)))
  '(paradox-automatically-star t)
  '(safe-local-variable-values
    (quote
     ((encoding . utf-8)
      (project-venv-name . "bee")
      (project-venv-name . "wcms"))))
- '(session-use-package t nil (session))
+;;  '(session-use-package t nil (session))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
