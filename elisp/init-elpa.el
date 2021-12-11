@@ -1,4 +1,3 @@
-(setq package-archives '(("melpa" . "https://stable.melpa.org/packages/")))
 
 
 (defun require-package (package &optional min-version no-refresh)
@@ -12,8 +11,6 @@ re-downloaded in order to locate PACKAGE."
       (progn
         (package-refresh-contents)
         (require-package package min-version t)))))
-
-(package-initialize)
 
 
 (provide 'init-elpa)

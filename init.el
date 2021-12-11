@@ -11,14 +11,19 @@
 
 
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
+;;----------------------------------------------------------------------------
+;; Initialize package management
+;;----------------------------------------------------------------------------
+(require 'package)
+(setq package-archives '(("gnu"   . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+                         ("melpa" . "http://mirrors.cloud.tencent.com/elpa/melpa/")))
 (package-initialize)
+(eval-when-compile
+  (require 'use-package))
+
+
 
 (defconst *is-a-mac* (eq system-type 'darwin))
-
 ;;----------------------------------------------------------------------------
 ;; Initialize load-path by "~/.emacs.d/elisp"
 ;;----------------------------------------------------------------------------
@@ -36,7 +41,6 @@
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
 
-(require 'init-filetree)
 ;; (require 'init-dash)
 (require 'init-ido)
 (require 'init-ibuffer)
@@ -52,18 +56,18 @@
 ;; (require 'init-flymake)
 ;; (require 'init-dired)
 ;; (require 'init-wget)
-;; (require 'init-project)
+(require 'init-project)
 
 (require 'init-ssh)
 (require 'init-shell)
 (require 'init-org)
 ;; (require 'init-theme)
 (require 'init-gui-frames)
-;; (require 'init-speedbar)
 
 (require 'init-image)
 (require 'init-json)
 (require 'init-markdown)
+(require 'init-js)
 ;; (require 'init-yaml)
 ;; (require 'init-webmode)
 ;; (require 'init-python)
@@ -75,6 +79,7 @@
 ;; (require 'init-editing-utils)
 (require 'init-binding)
 (require 'init-window)
+(require 'init-protobuf)
 (require 'init-misc)
 
 
@@ -117,7 +122,7 @@
 ;;(set-fontset-font "fontset-default" 'han '("STHeiti"))
 
 (global-auto-revert-mode)
-(setq default-directory "~/workspace/")
+(setq default-directory "~/workspace/meituan/")
 (setq default-tab-width 4)
 (setq-default indent-tabs-mode nil)
 (setq c-basic-offset 4)
@@ -130,25 +135,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- ;; '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(column-number-mode t)
  '(current-language-environment "UTF-8")
- '(cursor-type (quote bar))
- '(custom-enabled-themes (quote (sanityinc-solarized-dark)))
+ '(cursor-type 'bar)
+ '(custom-enabled-themes '(sanityinc-solarized-dark))
  '(custom-safe-themes
-   (quote
-    ("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default)))
+   '("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default))
  '(display-time-mode t)
  '(package-selected-packages
-   (quote
-    (go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag)))
+   '(treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
  '(paradox-automatically-star t)
  '(safe-local-variable-values
-   (quote
-    ((encoding . utf-8)
+   '((encoding . utf-8)
      (project-venv-name . "bee")
-     (project-venv-name . "wcms"))))
-;;  '(session-use-package t nil (session))
+     (project-venv-name . "wcms")))
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil))
