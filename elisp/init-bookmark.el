@@ -1,17 +1,14 @@
-;; bookmark plus
+;; bookmark 
 
-(require-package 'bookmark+)
-(require-package 'bm)
+(use-package bm
+  :ensure t
+  ;; :config
+  :bind-keymap
+  ("C-c m" .  bm-toggle)
+  ("<F2>" .   bm-next)
+  ("S-<F2>" . bm-previous))
 
-
-(require 'bookmark+)
-(setq bmkp-auto-light-when-set 'Any bookmark)
-
-(require 'bm)
-(setq bm-highlight-style 'bm-highlight-only-fringe)
-(global-set-key (kbd "C-c m") 'bm-toggle)
-(global-set-key (kbd "<f2>")   'bm-next)
-(global-set-key (kbd "<S-f2>") 'bm-previous)
+(defalias 'bookmarks 'list-bookmarks)
 
 
 (provide 'init-bookmark)

@@ -1,15 +1,20 @@
 ;; projectile
-(require-package 'projectile)
+(use-package projectile
+  :ensure t
+  :init
+  (projectile-global-mode)
+  :config
+  (setq projectile-enable-caching t)
+  (setq projectile-completion-system 'ivy)
+  :bind (:map projectile-mode-map
+              ("C-c p" . projectile-command-map)
+              ("M-`" . projectile-find-file)))
 
-;; (setq projectile-enable-caching t)
-(projectile-global-mode)
 
-
-(setq projectile-completion-system 'ivy)
 (ivy-mode)
 (setq ivy-use-virtual-buffers t)
 (setq enable-recursive-minibuffers t)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;; (global-set-key (kbd "M-x") 'counsel-M-x)
 
 (use-package treemacs
   :ensure t
@@ -61,6 +66,7 @@
     ;; using a Hi-DPI display, uncomment this to double the icon size.
     ;;(treemacs-resize-icons 44)
 
+    (treemacs-define-custom-image-icon "~/.emacs.d/treemacs-icon/protobuf_icon.png" "proto")
     (treemacs-follow-mode t)
     (treemacs-filewatch-mode t)
     (treemacs-fringe-indicator-mode t)
@@ -72,11 +78,17 @@
        (treemacs-git-mode 'simple))))
   :bind
   (:map global-map
+        ("<f5>"   . treemacs)
         ("C-x t t"   . treemacs)
-        ("C-x t B"   . treemacs-bookmark)))
+        ("C-x t B"   . treemacs-bookmark)
+   :map treemacs-mode-map
+        ("SPC" . treemacs-TAB-action)))
 
 (use-package treemacs-projectile
   :after (treemacs projectile)
+  :ensure t)
+(use-package treemacs-icons-dired
+  :hook (dired-mode . treemacs-icons-dired-enable-once)
   :ensure t)
 
 (provide 'init-project)

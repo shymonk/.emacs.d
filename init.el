@@ -44,7 +44,7 @@
 ;; (require 'init-dash)
 (require 'init-ido)
 (require 'init-ibuffer)
-;; (require 'init-bookmark)
+(require 'init-bookmark)
 (require 'init-git)
 ;; (require 'init-unicode)
 (require 'init-linum)
@@ -68,7 +68,7 @@
 (require 'init-json)
 (require 'init-markdown)
 (require 'init-js)
-;; (require 'init-yaml)
+(require 'init-yaml)
 ;; (require 'init-webmode)
 ;; (require 'init-python)
 ;; (require 'init-go)
@@ -143,7 +143,7 @@
    '("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default))
  '(display-time-mode t)
  '(package-selected-packages
-   '(treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
+   '(treemacs-icons-dired yaml-mode treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
  '(paradox-automatically-star t)
  '(safe-local-variable-values
    '((encoding . utf-8)
