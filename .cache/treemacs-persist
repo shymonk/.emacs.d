@@ -1,0 +1,9 @@
+* Default Workspace
+** UDM-Nodejs
+ - path :: ~/workspace/meituan/uav/mtuav-udm
+** udm-proto
+ - path :: ~/workspace/meituan/uav/mtuav-udm-proto
+** muav
+ - path :: ~/workspace/meituan/muav
+** .emacs.d
+ - path :: ~/.emacs.d
