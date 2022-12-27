@@ -71,9 +71,9 @@
 ;; (require 'init-lua)
 ;; (require 'init-httpd)
 
+(require 'init-binding)
 (require 'init-search)
 ;; (require 'init-editing-utils)
-(require 'init-binding)
 (require 'init-window)
 (require 'init-protobuf)
 (require 'init-misc)
@@ -147,7 +147,8 @@
      (project-venv-name . "wcms")))
  '(show-paren-mode t)
  '(size-indication-mode t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(treemacs-persist-file "/Users/john/.emacs.d/treemacs-workspace-projects.org"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
