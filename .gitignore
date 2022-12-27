@@ -21,3 +21,8 @@ frame-restore-parameters
 projectile-bookmarks.eld
 projectile.cache
 .mc-lists.el
+
+ido.last
+recentf
+
+

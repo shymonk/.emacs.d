@@ -1,9 +1,11 @@
 * Default Workspace
-** UDM-Nodejs
- - path :: ~/workspace/meituan/uav/mtuav-udm
-** udm-proto
- - path :: ~/workspace/meituan/uav/mtuav-udm-proto
 ** muav
- - path :: ~/workspace/meituan/muav
+ - path :: ~/Workspace/meituan/muav
+** hussar-web
+ - path :: ~/Workspace/meituan/hussar-web
+** UDM-Nodejs
+ - path :: ~/Workspace/meituan/mtuav-udm
 ** .emacs.d
  - path :: ~/.emacs.d
+** googleapi
+ - path :: ~/Workspace/googleapis
