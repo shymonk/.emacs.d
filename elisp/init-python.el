@@ -3,6 +3,9 @@
 
 ;;----------------------------------------------------------------------------
 ;; anaconda-mode and company-mode
+;; https://github.com/pythonic-emacs/anaconda-mode
+;; https://github.com/company-mode/company-quickhelp
+;; 
 ;;----------------------------------------------------------------------------
 (add-hook 'after-init-hook 'global-company-mode)
 (global-company-mode t)
