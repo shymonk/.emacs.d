@@ -1,6 +1,4 @@
 
-;;; Code:
-
 ;;----------------------------------------------------------------------------
 ;; anaconda-mode and company-mode
 ;; https://github.com/pythonic-emacs/anaconda-mode
