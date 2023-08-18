@@ -1,11 +1,15 @@
 * Default Workspace
 ** muav
  - path :: ~/Workspace/meituan/muav
-** UDM-Nodejs
- - path :: ~/Workspace/meituan/mtuav-udm
-** hussar-web
- - path :: ~/Workspace/meituan/hussar-web
-** googleapi
- - path :: ~/Workspace/googleapis
 ** .emacs.d
  - path :: ~/.emacs.d
+** hussar-lanscan
+ - path :: ~/Workspace/meituan/hussar-lanscan
+** hussar-web
+ - path :: ~/Workspace/meituan/hussar-web
+** sanzhan
+ - path :: ~/Workspace/games/sanzhan
+** mendel
+ - path :: ~/Workspace/meituan/mtuav-mendel
+** iperf-server
+ - path :: ~/Workspace/meituan/iperf-server

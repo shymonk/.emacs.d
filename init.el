@@ -46,7 +46,7 @@
 (require 'init-git)
 ;; (require 'init-unicode)
 (require 'init-linum)
-;; (require 'init-highlight)
+(require 'init-highlight)
 (require 'init-cscope)
 (require 'init-yasnippet)
 ;; (require 'init-auto-complete)
@@ -59,14 +59,15 @@
 (require 'init-org)
 (require 'init-gui-frames)
 
-(require 'init-image)
+(require 'init-lsp)
+;; (require 'init-image)
 (require 'init-json)
 (require 'init-markdown)
 (require 'init-js)
 (require 'init-yaml)
 ;; (require 'init-webmode)
 (require 'init-python)
-;; (require 'init-go)
+(require 'init-go)
 ;; (require 'init-lua)
 ;; (require 'init-httpd)
 
@@ -138,7 +139,7 @@
    '("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default))
  '(display-time-mode t)
  '(package-selected-packages
-   '(command-log-mode company-quickhelp vue-mode tide go-mode flycheck treemacs-icons-dired yaml-mode treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-add-tags go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
+   '(nginx-mode command-log-mode company-quickhelp vue-mode tide go-mode flycheck treemacs-icons-dired yaml-mode treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
  '(paradox-automatically-star t)
  '(safe-local-variable-values
    '((encoding . utf-8)
@@ -147,7 +148,9 @@
  '(show-paren-mode t)
  '(size-indication-mode t)
  '(tool-bar-mode nil)
- '(treemacs-persist-file "/Users/john/.emacs.d/treemacs-workspace-projects.org"))
+ '(treemacs-persist-file "/Users/john/.emacs.d/treemacs-workspace-projects.org")
+ '(treemacs-width 50)
+ '(treemacs-width-is-initially-locked nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
