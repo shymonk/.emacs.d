@@ -8,5 +8,7 @@
 
 (require 'tramp)
 (setq tramp-default-method "ssh")
+(setq tramp-verbose 10)
+(setq tramp-terminal-type "tramp") 
 
 (provide 'init-ssh)

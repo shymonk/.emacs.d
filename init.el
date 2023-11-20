@@ -124,6 +124,8 @@
 (setq c-basic-offset 4)
 (add-hook 'html-mode-hook (lambda () (setq sgml-basic-offset 4)))
 (add-hook 'python-mode-hook(lambda () (setq tab-width 4) (setq python-indent 4)))
+(add-hook 'js-mode-hook(lambda () (setq js-indent-level 2)))
+(add-hook 'typescript-mode-hook(lambda () (setq typescript-indent-level 2)))
 
 
 (custom-set-variables
@@ -139,7 +141,7 @@
    '("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default))
  '(display-time-mode t)
  '(package-selected-packages
-   '(nginx-mode command-log-mode company-quickhelp vue-mode tide go-mode flycheck treemacs-icons-dired yaml-mode treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
+   '(cmake-mode nginx-mode command-log-mode company-quickhelp vue-mode tide go-mode flycheck treemacs-icons-dired yaml-mode treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
  '(paradox-automatically-star t)
  '(safe-local-variable-values
    '((encoding . utf-8)

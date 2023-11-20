@@ -1,10 +1,12 @@
 * Default Workspace
+** rtp-player-sdk
+ - path :: ~/Workspace/meituan/rtp-player-sdk
+** uav-video
+ - path :: ~/Workspace/meituan/uav-video
+** emacs.d
+ - path :: ~/.emacs.d
 ** muav
  - path :: ~/Workspace/meituan/muav
-** .emacs.d
- - path :: ~/.emacs.d
-** hussar-lanscan
- - path :: ~/Workspace/meituan/hussar-lanscan
 ** hussar-web
  - path :: ~/Workspace/meituan/hussar-web
 ** sanzhan
