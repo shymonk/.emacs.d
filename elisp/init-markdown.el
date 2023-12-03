@@ -7,6 +7,8 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(custom-set-variables '(markdown-command "/usr/local/bin/markdown"))
+
 ;; Make windmove work in markdown-mode
 (add-hook 'gfm-mode-hook
       (lambda ()
