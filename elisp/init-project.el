@@ -47,7 +47,7 @@
           treemacs-no-png-images                 nil
           treemacs-no-delete-other-windows       t
           treemacs-project-follow-cleanup        nil
-          treemacs-persist-file                  (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+          treemacs-persist-file                  (expand-file-name "treemacs-workspace-projects.org" user-emacs-directory)
           treemacs-position                      'left
           treemacs-recenter-distance             0.1
           treemacs-recenter-after-file-follow    nil
@@ -63,7 +63,8 @@
           treemacs-tag-follow-cleanup            t
           treemacs-tag-follow-delay              1.5
           treemacs-user-mode-line-format         nil
-          treemacs-width                         25)
+          treemacs-width                         25
+          treemacs-width-is-initially-locked     nil)
 
     ;; The default width and height of the icons is 22 pixels. If you are
     ;; using a Hi-DPI display, uncomment this to double the icon size.

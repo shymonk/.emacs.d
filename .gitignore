@@ -28,4 +28,6 @@ recentf
 
 anaconda-mode/
 bm-repository
-.cache/
+empager-savehist
+network-security.data
+/url

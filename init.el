@@ -140,6 +140,7 @@
  '(custom-safe-themes
    '("4aee8551b53a43a883cb0b7f3255d6859d766b6c5e14bcb01bed572fcbef4328" default))
  '(display-time-mode t)
+ '(markdown-command "/usr/local/bin/markdown")
  '(package-selected-packages
    '(cmake-mode nginx-mode command-log-mode company-quickhelp vue-mode tide go-mode flycheck treemacs-icons-dired yaml-mode treemacs-projectile treemacs use-package counsel go-tag godoctor markdown-mode markdown-mode+ company-go company go-autocomplete go-eldoc dockerfile-mode yasnippet xcscope wget web-mode web-beautify visual-regexp virtualenvwrapper tabbar sr-speedbar simple-httpd scala-mode sass-mode python-mode powerline paradox org nlinum neotree nav multiple-cursors magit lua-mode json-mode jedi highlight-symbol git-timemachine git-rebase-mode git-gutter git-commit-mode frame-restore flymake-python-pyflakes fiplr f expand-region exec-path-from-shell edit-server direx bookmark+ bm ag))
  '(paradox-automatically-star t)
@@ -149,10 +150,7 @@
      (project-venv-name . "wcms")))
  '(show-paren-mode t)
  '(size-indication-mode t)
- '(tool-bar-mode nil)
- '(treemacs-persist-file "/Users/john/.emacs.d/treemacs-workspace-projects.org")
- '(treemacs-width 50)
- '(treemacs-width-is-initially-locked nil))
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
