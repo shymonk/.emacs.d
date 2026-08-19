@@ -8,7 +8,7 @@
       (mapc 'kill-buffer (delq (current-buffer) (buffer-list))))
 
 (require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 (setq uniquify-after-kill-buffer-p t)
 
 (defun switch-to-other-buffer ()
